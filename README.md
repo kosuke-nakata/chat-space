@@ -41,3 +41,4 @@
 - has_many :massages
 - has_many :users
 - has_many :users, through: :groups_users
+
