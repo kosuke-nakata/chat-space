@@ -1,6 +1,6 @@
 # README
 
-## usersテーブル
+-## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |email|string|null: false|
@@ -41,4 +41,3 @@
 - has_many :massages
 - has_many :users
 - has_many :users, through: :groups_users
-
