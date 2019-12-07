@@ -1,12 +1,20 @@
 .chat-side
   .side-header
     .side-header__box
-      .side-header__username<ABCD
+      .side-header__username
+        %p ABCD
       .side-header__menu
-        = link_to "＃", class: "contents__btn" do
-          = icon('fa', 'edit')
-        = link_to "＃", class: "contents__btn" do
-          = icon('fa', 'cog')
+        = link_to "＃", class: "contents__btn__edit" do
+          = icon('fa', 'edit', class: "side-header__menu__edit-user")
+        = link_to "＃", class: "contents__btn__cog" do
+          = icon('fa', 'cog' , class: "side-header__menu__new-group")
+
+.groups
+  .group
+    .group-name 
+      %p ACE  
+    .message
+      %p まだメッセージはありません
 
 
       
