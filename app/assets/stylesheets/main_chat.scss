@@ -10,6 +10,25 @@
   .main-header {
     background-color:#ffffff;
     height: 100px;
+    padding: 0 40px;
+    position: relative;
+
+    .left-content {
+      position: absolute;
+      left: 40px;
+      
+      .user-group {
+        margin-top: 35px;
+        font-size: 20px;
+        color: #333333;
+      }
+
+      .member {
+        margin-top: 15px;
+        font-size: 12px;
+        color: #999999;
+      }
+    }
   }
     .main-footer {
       width: 100%;
