@@ -1,8 +1,12 @@
 .main-chat 
   .main-header
-    .left-content
-      .user-group
+    .main-header__left-content
+      .main-header__left-content__user-group
         %p ACE
-      .member
+      .main-header__left-content__member
         %p Member :
+    .main-header__edit 
+      = link_to "＃", class: "main-header__edit__btn__edit" do
+        Edit
+
   .main-footer
