@@ -79,12 +79,15 @@
       display: flex;
       &__new-message {
         width: 100%;
-        padding: 20px 50px;
+        padding: 20px 40px;
         display: flex;
       &__inputbox {
       height: 50px; 
       width: 100%;
       padding: 0 40px 0 10px;
+      &__image__btn {
+      
+      }
       &__send-btn {
         width: 100px;
         height: 50px;
@@ -92,9 +95,17 @@
         margin-left: 15px;
         border: 1px solid skyblue;
         background-color: skyblue;
+        position: relative;
+      &__send {
+        text-decoration: none;
+        position: absolute;
+        top: 10px;
+        bottom: 40px;
+        left: 25px;
       }
+        }
+      }     
       }
       }
 
-}
 }
