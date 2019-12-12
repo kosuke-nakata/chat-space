@@ -29,11 +29,11 @@
 
   .form
     .form__new-message
-      %input.form__new-message__inputbox{:name => "", :placeholder => "type a message", :type => "text", :value => ""}/
+      %input.form__new-message__inputbox{name: "", placeholder: "type a message", type: "text", value: ""}/
       .form__new-message__inputbox__image
         %label{class: "form__new-message__inputbox__image__btn"}
-        = icon('fas', 'image')
-        %input{type: "file"}
+          = icon('fas', 'image')
+          %input.form__new-message__inputbox__file{type: "file"}
       .form__new-message__inputbox__send-btn
         = link_to "#", class: "form__new-message__inputbox__send-btn__send" do
           Send
