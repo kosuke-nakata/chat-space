@@ -1,12 +1,13 @@
 .chat-side
   .side-header
     .side-header__box
+    =current_user.name
       .side-header__box__username
         %p ABCD
       .side-header__box__menu
         = link_to "＃", class: "contents__btn__edit" do
           = icon('fa', 'edit', class: "side-header__menu__edit-user")
-        = link_to "＃", class: "contents__btn__cog" do
+        = link_to edit_user_path(current_user) "＃", class: "contents__btn__cog" do
           = icon('fa', 'cog' , class: "side-header__menu__new-group")
 
 .groups
