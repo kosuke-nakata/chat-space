@@ -10,16 +10,14 @@
           = icon('fa', 'cog' , class: "side-header__menu__new-group")
 
 .groups
-  .group
-    .group-name 
-      %p ACE  
-    .message
-      %p まだメッセージはありません
-    .group-name 
-      %p ACE  
-    .message
-      %p まだメッセージはありません
-
+  - current_user.groups.each do |group|
+    .group
+    = link_to '#' do
+      .group-name 
+        = group.name 
+      .message
+        まだメッセージはありません
+    
 
 
       
