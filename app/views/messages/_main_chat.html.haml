@@ -9,32 +9,30 @@
       = link_to "＃", class: "main-header__edit__btn__edit" do
         Edit
 
-  .massages
-    .massages__massage
-      .massages__massage__info
-        .massages__massage__info__user-name
-          %p ABCD
-        .massages__massage__info__date
-          %p 2019/12/8(sun)19:30
-      .massages__massage__text      
-        %p テキスト
-      .massages__massage__info
-        .massages__massage__info__user-name
-          %p ABCD
-        .massages__massage__info__date
-          %p 2019/12/8(sun)19:30
+  .messages
+    = render @messages
+    .messages__message
+      .messages__message__info
+        .messages__message__info__user-name
+          = message.user.name
+        .messages__message__info__date
+          = message.created_at.strftime("%Y/%m/%d %H:%M")
+      .messages__message__text      
+        - if message.content.present?
+          %p.messages__message__text__content
+            = message.content
+        = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+        
+  form
+    .form__new-message
+      = form_for [@group, @message] do |f|
+        = f.form__new-message__inputbox, class: 'new-message', placeholder: "type a message"
+        .form__new-message__inputbox__image
+          = f.label :image, :class: 'form__new-message__inputbox__image__btn' do
+            = icon('fas', 'image')
+            f.form__new-message__inputbox__file :image, class: 'file'
+        .form__new-message__inputbox__send-btn
+          = f.submit 'Send', class: 'form__new-message__inputbox__send-btn__send'
+           
 
-      .massages__massage__text      
-        %p テキスト
-
-  .form
-    .form__new-message
-      %input.form__new-message__inputbox{name: "", placeholder: "type a message", type: "text", value: ""}/
-      .form__new-message__inputbox__image
-        %label{class: "form__new-message__inputbox__image__btn"}
-          = icon('fas', 'image')
-          %input.form__new-message__inputbox__file{type: "file"}
-      .form__new-message__inputbox__send-btn
-        = link_to "#", class: "form__new-message__inputbox__send-btn__send" do
-          Send
  
