@@ -63,10 +63,12 @@
       font-size: 14px;
       color: #999999;
       padding-bottom: 46px;
+    .lower-message__image {
+      height: 150px;
+    }
     }
   }
    }   
-  
 
     .form {
       width: 100%;
@@ -76,44 +78,39 @@
       bottom: 0;
       left: 0;
       display: flex;
-      &__new-message {
+    
+      .new_message {
         width: 100%;
-        padding: 20px 40px;
+        padding: 10px 20px;
         display: flex;
-        position: relative;
         
-      &__inputbox {
-      height: 50px; 
-      width: 100%;
-      padding: 0 40px 0 10px;
-      
-      &__image {
+      .form__message {
+        position: relative;
+        width: 100%;
+        padding-left: 10px;
+        display: flex;
+        border: none;
+      }
+      .form__new_message__inputbox__image {
         position: absolute;
-        right: 160px;
-        top: 33px;
+        bottom: 35px;
+        right: 165px;
+      
+      .hidden {
+        display: none;
       }
-      &__file {
-      display: none;
       }
-      &__send-btn {
+
+      .new_message__inputbox__send-btn {
         width: 100px;
         height: 50px;
         padding: 0 30px;
         margin-left: 15px;
-        border: 1px solid #38aef0;
         background-color: #38aef0;
-        position: relative;
-      &__send {
-        text-decoration: none;
-        position: absolute;
-        top: 11px;
-        bottom: 40px;
-        left: 25px;
-        color: white;
-      }
+        color: #ffffff;
         }
       }     
       }
       }
 
-}
+

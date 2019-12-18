@@ -11,28 +11,12 @@
 
   .messages
     = render @messages
-    .messages__message
-      .messages__message__info
-        .messages__message__info__user-name
-          = message.user.name
-        .messages__message__info__date
-          = message.created_at.strftime("%Y/%m/%d %H:%M")
-      .messages__message__text      
-        - if message.content.present?
-          %p.messages__message__text__content
-            = message.content
-        = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
-        
-  form
-    .form__new-message
-      = form_for [@group, @message] do |f|
-        = f.form__new-message__inputbox, class: 'new-message', placeholder: "type a message"
-        .form__new-message__inputbox__image
-          = f.label :image, :class: 'form__new-message__inputbox__image__btn' do
-            = icon('fas', 'image')
-            f.form__new-message__inputbox__file :image, class: 'file'
-        .form__new-message__inputbox__send-btn
-          = f.submit 'Send', class: 'form__new-message__inputbox__send-btn__send'
-           
-
- 
+  .form
+    = form_for [@group, @message] do |f|
+      .new_message
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__new_message__inputbox__image
+          = f.label :image, class: 'form__mask__image' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'new_message__inputbox__send-btn  '
