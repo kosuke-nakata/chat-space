@@ -1,3 +1,8 @@
+*{
+  box-sizing: border-box;
+}
+
+
 .wrapper {
   display: flex;
 }
@@ -27,6 +32,7 @@
         margin-top: 15px;
         font-size: 12px;
         color: #999999;
+        display: flex;
       }  
     }
         
@@ -43,6 +49,8 @@
     }
   }
   .messages {
+    overflow: scroll;
+    height: calc(100vh - 190px);
     padding: 46px 40px;
     &__message {
     &__info {
@@ -93,8 +101,14 @@
       }
       .form__new_message__inputbox__image {
         position: absolute;
-        bottom: 35px;
+        bottom: 32px;
         right: 165px;
+
+        .icon {
+          font-size: 1.5em;
+          height: 5px;
+          cursor: pointer;
+        }
       
       .hidden {
         display: none;
@@ -108,6 +122,7 @@
         margin-left: 15px;
         background-color: #38aef0;
         color: #ffffff;
+        cursor: pointer;
         }
       }     
       }

@@ -2,9 +2,11 @@
   .main-header
     .main-header__left-content
       .main-header__left-content__user-group
-        %p ACE
+        = @group.name
       .main-header__left-content__member
-        %p Member :
+        %p Member : 
+        -@group.users.each do |user|
+          = user.name
     .main-header__edit 
       = link_to "＃", class: "main-header__edit__btn__edit" do
         Edit
@@ -17,6 +19,6 @@
         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
         .form__new_message__inputbox__image
           = f.label :image, class: 'form__mask__image' do
-            = icon('fas', 'image', class: 'icon')
+            = icon('far', 'image', class: 'icon')
             = f.file_field :image, class: 'hidden'
         = f.submit 'Send', class: 'new_message__inputbox__send-btn  '
