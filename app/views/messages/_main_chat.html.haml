@@ -2,39 +2,23 @@
   .main-header
     .main-header__left-content
       .main-header__left-content__user-group
-        %p ACE
+        = @group.name
       .main-header__left-content__member
-        %p Member :
+        %p Member : 
+        -@group.users.each do |user|
+          = user.name
     .main-header__edit 
-      = link_to "＃", class: "main-header__edit__btn__edit" do
+      = link_to edit_group_path(@group), class: "main-header__edit__btn__edit" do
         Edit
 
-  .massages
-    .massages__massage
-      .massages__massage__info
-        .massages__massage__info__user-name
-          %p ABCD
-        .massages__massage__info__date
-          %p 2019/12/8(sun)19:30
-      .massages__massage__text      
-        %p テキスト
-      .massages__massage__info
-        .massages__massage__info__user-name
-          %p ABCD
-        .massages__massage__info__date
-          %p 2019/12/8(sun)19:30
-
-      .massages__massage__text      
-        %p テキスト
-
+  .messages
+    = render @messages
   .form
-    .form__new-message
-      %input.form__new-message__inputbox{name: "", placeholder: "type a message", type: "text", value: ""}/
-      .form__new-message__inputbox__image
-        %label{class: "form__new-message__inputbox__image__btn"}
-          = icon('fas', 'image')
-          %input.form__new-message__inputbox__file{type: "file"}
-      .form__new-message__inputbox__send-btn
-        = link_to "#", class: "form__new-message__inputbox__send-btn__send" do
-          Send
- 
+    = form_for [@group, @message] do |f|
+      .new_message
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__new_message__inputbox__image
+          = f.label :image, class: 'form__mask__image' do
+            = icon('far', 'image', class: 'icon')
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'new_message__inputbox__send-btn  '
