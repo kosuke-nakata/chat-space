@@ -2,17 +2,17 @@ $(function(){
      function buildHTML(message){
       if ( message.image ) {
         var html =
-        `<div class="message" data-message-id=${message.id}>
-            <div class="upper-message">
-              <div class="upper-message__user-name">
+        `<div class="messages__message" data-message-id=${message.id}>
+            <div class="messages__message__info">
+              <div class="messages__message__info__user-name"">
                 ${message.user_name}
               </div>
-              <div class="upper-message__date">
+              <div class="messages__message__info__date">
                 ${message.created_at}
               </div>
             </div>
-            <div class="lower-message">
-              <p class="lower-message__content">
+            <div class="messages__message__text">
+              <p class="messages__message__text__conten">
                 ${message.content}
               </p>
             </div>
@@ -21,17 +21,17 @@ $(function(){
         return html;
       } else {
         var html =
-        `<div class="message" data-message-id=${message.id}>
-            <div class="upper-message">
-              <div class="upper-message__user-name">
+        `<div class="messages__message" data-message-id=${message.id}>
+            <div class="messages__message__info">
+              <div class="messages__message__info__user-name"">
                 ${message.user_name}
               </div>
-              <div class="upper-message__date">
+              <div class="messages__message__info__date">
                 ${message.created_at}
               </div>
             </div>
-            <div class="lower-message">
-              <p class="lower-message__content">
+            <div class="messages__message__text">
+              <p class="messages__message__text__conten">
                 ${message.content}
               </p>
             </div>
@@ -58,5 +58,8 @@ $(function(){
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
       $('.new_message__inputbox__send-btn').prop('disabled', false);
     })
+    .fail(function() {
+      alert("メッセージ送信に失敗しました");
+  });
 })
 });
