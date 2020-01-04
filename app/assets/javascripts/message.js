@@ -1,8 +1,49 @@
 $(function(){
-  
+  function buildHTML(message){
+          if (message.image && message.content) {
+            var html =
+            `<div class="messages__message" data-id="${message.id}">
+                <div class="messages__message__info">
+                  <div class="messages__message__info__user-name">
+                    ${message.user_name}
+                  </div>
+                  <div class="messages__message__info__date">
+                    ${message.created_at}
+                  </div>
+                </div>
+                <div class="messages__message__text">
+                  <p class="messages__message__text__content">
+                    ${message.content}
+                  </p>
+                </div>
+                <img src="${message.image}" >
+              </div>`
+            return html;
+          } else {
+            var html =
+            `<div class="messages__message" data-id="${message.id}">
+                 <div class="messages__message__info">
+                  <div class="messages__message__info__user-name">
+                    ${message.user_name}
+                  </div>
+                  <div class="messages__message__info__date">
+                    ${message.created_at}
+                  </div>
+                </div>
+                <div class="messages__message__text">
+                  <p class="messages__message__text__content">
+                    ${message.content}
+                  </p>
+                </div>
+              </div>`
+            return html;
+          };
+        }
 
   var reloadMessages = function() {
-    last_message_id = $('.message:last').data("message-id");
+    last_message_id = $(".messages__message:last").data("id");
+    console.log(last_message_id)
+
     $.ajax({
       url: "api/messages",
       type: 'get',
@@ -25,50 +66,8 @@ $(function(){
       console.log('error');
     });
   };
-  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
-  setInterval(reloadMessages, 7000);
-  }
+  
 
-  function buildHTML(message){
-          if ( message.image ) {
-            var html =
-            `<div class="messages__message" data-message-id=${message.id}>
-                <div class="messages__message__info">
-                  <div class="messages__message__info__user-name"">
-                    ${message.user_name}
-                  </div>
-                  <div class="messages__message__info__date">
-                    ${message.created_at}
-                  </div>
-                </div>
-                <div class="messages__message__text">
-                  <p class="messages__message__text__conten">
-                    ${message.content}
-                  </p>
-                </div>
-                <img src=${message.image} >
-              </div>`
-            return html;
-          } else {
-            var html =
-            `<div class="messages__message" data-message-id=${message.id}>
-                <div class="messages__message__info">
-                  <div class="messages__message__info__user-name"">
-                    ${message.user_name}
-                  </div>
-                  <div class="messages__message__info__date">
-                    ${message.created_at}
-                  </div>
-                </div>
-                <div class="messages__message__text">
-                  <p class="messages__message__text__conten">
-                    ${message.content}
-                  </p>
-                </div>
-              </div>`
-            return html;
-          };
-        }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -83,7 +82,8 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html);      
+      $('.messages').append(html);
+      console.log(html)  
       $('form')[0].reset();
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
       $('.new_message__inputbox__send-btn').prop('disabled', false);
@@ -92,4 +92,7 @@ $(function(){
       alert("メッセージ送信に失敗しました");
     });
   })
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+    }  
 });
