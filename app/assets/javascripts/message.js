@@ -1,6 +1,6 @@
 $(function(){
   function buildHTML(message){
-          if (message.image && message.content) {
+          if (message.image) {
             var html =
             `<div class="messages__message" data-id="${message.id}">
                 <div class="messages__message__info">
